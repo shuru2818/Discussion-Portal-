@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+}
+
+#mainhead {
+  background: #1e8449;
+  color: white;
+  padding: 14px 20px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.maindiv {
+  display: flex;
+  height: calc(100vh - 52px);
+}
+
+/* LEFT SIDE */
+#leftdiv {
+  width: 35%;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+#updiv {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#search {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#newbtn {
+  padding: 6px 10px;
+  background: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#newbtn:hover {
+  background: #2168b5;
+}
+
+#downdiv {
+  flex: 1;
+  overflow-y: auto;
+}
+
+#downdiv div {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#downdiv div:hover {
+  background: #f8f9fa;
+}
+
+#downdiv h1 {
+  font-size: 16px;
+
+}
+
+#downdiv p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* RIGHT SIDE */
+#rightdiv {
+  width: 65%;
+  padding: 40px;
+  background: #fdfdfd;
+}
+
+#main h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#main p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+button {
+  padding: 7px 14px;
+  background: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2168b5;
+}
+
+#quesdiv, #responselist {
+  background: #f4f6f8;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+#resolve-btn {
+  background: #e74c3c;
+  margin: 10px 0;
+  
+}
+
+#resolve-btn:hover {
+  background: #c0392b;
+}
+
+.highlight{
+  background-color: yellow;
+}
