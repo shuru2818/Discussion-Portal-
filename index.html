@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="decisionstyle.css" />
   </head>
   <body>
-    <h1 id="mainhead">Decision Portal</h1>
+    <h1 id="mainhead">Discussion Portal</h1>
     <div class="maindiv">
       <div id="leftdiv">
         <div id="updiv">
           <button id="newbtn">New Question form</button>
-          <input type="text" placeholder="search questions" id="search" />
+          <div id="searchContainer">
+            <input type="text" placeholder="search questions" id="search" />
+            <button id="addQuestionBtn"><i class="fas fa-plus"></i> Add Question</button>
+          </div>
         </div>
         <div id="downdiv"></div>
       </div>

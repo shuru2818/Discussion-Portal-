@@ -33,9 +33,9 @@
 
           quesdiv.innerHTML = `
              <div>
-                <h1 style= "display:inline">${q.subject}</h1>
+                <h1>${q.subject}</h1>
                 <button id="fav"  onclick="event.stopPropagation(); togglefunc(${index})">
-                  ${q.fav ? "❤️" : "🤍"}
+                  <i class="${q.fav ? 'fas' : 'far'} fa-heart" style="color: ${q.fav ? '#cb2431' : '#959da5'}"></i>
                 </button>
                 <p>${q.question}</p>
                 <span>${timego(q.date)}</span>
@@ -55,28 +55,26 @@
         let select = questions[index];
 
         rightdiv.innerHTML = `
-        <div id="main">
-        <div>
+        <div id="question-header">
             <h2>Question</h2>
             <div id="quesdiv">
                 <h1>${select.subject}</h1>
                 <p>${select.question}</p>
             </div>
             <button onclick=resolve(${index}) id="resolve-btn">Resolve</button>
-            
-        <div>
+        </div>
+        <div id="responses-container">
             <h2>Response</h2>
             <div id="responselist"></div>
         </div>
-
+        <div id="add-response">
             <h2>Add Response</h2>
-        <div id="respdiv">
-            <input type="text" placeholder="Enter Name" id="res-name">
-            <textarea name="textarea" id="res-comment" placeholder="Enter Comment"> </textarea>
-            <button id="respbtn" onclick=addresponse()>Add Response</button>
+            <div id="respdiv">
+                <input type="text" placeholder="Enter Name" id="res-name">
+                <textarea name="textarea" id="res-comment" placeholder="Enter Comment"> </textarea>
+                <button id="respbtn">Add Response</button>
+            </div>
         </div>
-        </div>
-        <div>
         `;
 
         renderresponse(index);
@@ -119,13 +117,14 @@
         questions[index].responses.forEach((respp, rIndex) => {
           let div = document.createElement("div");
           div.innerHTML = `
-            <div>
+            <div class="response-item">
                 <h1>${respp.name}</h1>
                 <p>${respp.comment}</p>
-                <button onclick="upvote(${index}, ${rIndex})">👍🏻 ${respp.upvote}</button>
-                <button onclick="downvote(${index}, ${rIndex})">👎🏻 ${respp.downvote}</button>
-                
-
+                <div class="response-actions">
+                  <button onclick="upvote(${index}, ${rIndex})">👍🏻 ${respp.upvote}</button>
+                  <button onclick="downvote(${index}, ${rIndex})">👎🏻 ${respp.downvote}</button>
+                </div>
+                <span class="response-date">${timego(respp.dateset)}</span>
             </div>
             `;
           responselist.append(div);
@@ -205,11 +204,12 @@
           let div = document.createElement("div");
           div.innerHTML = `
           <div>
-                <h1 style= "display:inline">${highlight(q.subject, search.value)}</h1>
+                <h1>${highlight(q.subject, search.value)}</h1>
                 <button id="fav"  onclick="event.stopPropagation(); togglefunc(${index})">
-                  ${q.fav ? "❤️" : "🤍"}
+                  <i class="${q.fav ? 'fas' : 'far'} fa-heart" style="color: ${q.fav ? '#cb2431' : '#959da5'}"></i>
                 </button>
                 <p>${q.question}</p>
+                <span>${timego(q.date)}</span>
             </div>
           `;
           downdiv.append(div);
