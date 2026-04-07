@@ -32,6 +32,7 @@ body {
 
 .maindiv {
   display: flex;
+  flex-direction: row;
   height: calc(100vh - 60px);
   margin-top: 60px; /* Height of header */
   gap: 0;
@@ -44,26 +45,30 @@ body {
   border-right: 1px solid #e1e4e8;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 #updiv {
-  padding: 20px;
+  padding: 16px;
   border-bottom: 1px solid #e1e4e8;
   background: white;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 #searchContainer {
   display: flex;
   gap: 10px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #search {
-  width: 50%;
-  padding: 12px 40px 12px 16px;
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 12px;
   border: 1px solid #e1e4e8;
   border-radius: 8px;
   font-size: 14px;
@@ -115,7 +120,7 @@ body {
 }
 
 #addQuestionBtn {
-  padding: 12px 16px;
+  padding: 10px 14px;
   background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
   color: white;
   border: none;
@@ -126,6 +131,7 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 #addQuestionBtn:hover {
@@ -222,7 +228,7 @@ body {
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 #question-header {
@@ -231,13 +237,10 @@ body {
 }
 
 #question-header h2 {
-  position: sticky;
-  top: 0;
-  background: #f8f9fa;
-  font-size: 24px;
+  font-size: 20px;
   color: #24292e;
   font-weight: 600;
-  z-index: 5;
+  margin-bottom: 10px;
 }
 
 #responses-container {
@@ -246,19 +249,15 @@ body {
   flex-direction: column;
   overflow: hidden;
   margin-bottom: 20px;
-  height: 800px;
+  min-height: 0;
 }
 
 #responses-container h2 {
   flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  background: #f8f9fa;
-
   font-size: 15px;
   color: #24292e;
   font-weight: 600;
-  z-index: 5;
+  margin-bottom: 10px;
 }
 
 #responselist {
@@ -266,8 +265,8 @@ body {
   overflow-y: auto;
   background: white;
   border: 1px solid #e1e4e8;
-  padding: 20px;
-  height: 500px;
+  padding: 16px;
+  min-height: 0;
 }
 
 /* Custom scrollbar for responses */
@@ -291,10 +290,11 @@ body {
 
 #add-response {
   flex-shrink: 0;
+  margin-top: 10px;
 }
 
 #add-response h2 {
-  font-size: 20px;
+  font-size: 18px;
   color: #24292e;
   font-weight: 600;
   margin-bottom: 10px;
@@ -348,29 +348,30 @@ body {
 }
 
 #main h1 {
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 12px;
   color: #24292e;
   font-weight: 700;
 }
 
 #main p {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   color: #586069;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
 #subject, #question {
   width: 100%;
-  padding: 12px;
+  padding: 11px;
   border: 1px solid #e1e4e8;
   border-radius: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   font-size: 14px;
   transition: all 0.3s ease;
   background: white;
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 #subject:focus, #question:focus {
@@ -380,7 +381,7 @@ body {
 }
 
 #question {
-  height: 140px;
+  height: 130px;
   resize: vertical;
   min-height: 100px;
 }
@@ -444,13 +445,15 @@ body {
 
 #respdiv input, #respdiv textarea {
   width: 100%;
-  padding: 12px;
+  padding: 11px;
   border: 1px solid #e1e4e8;
   border-radius: 8px;
   margin-bottom: 12px;
   font-size: 14px;
   background: white;
   font-family: inherit;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 #respdiv input:focus, #respdiv textarea:focus {
@@ -460,8 +463,9 @@ body {
 }
 
 #respdiv textarea {
-  height: 100px;
+  height: 110px;
   resize: vertical;
+  min-height: 90px;
 }
 
 #respbtn {
@@ -509,6 +513,20 @@ body {
 }
 
 /* MOBILE RESPONSIVE */
+@media (max-width: 1024px) {
+  #leftdiv {
+    width: 30%;
+  }
+
+  #rightdiv {
+    width: 70%;
+  }
+
+  #responselist {
+    padding: 12px;
+  }
+}
+
 @media (max-width: 768px) {
   #mainhead {
     font-size: 20px;
@@ -517,61 +535,175 @@ body {
 
   .maindiv {
     flex-direction: column;
-    min-height: auto;
+    height: auto;
   }
 
   #leftdiv {
     width: 100%;
     border-right: none;
-    border-bottom: 2px solid #e8ecf1;
-    max-height: 45vh;
+    border-bottom: 2px solid #e1e4e8;
+    max-height: 40vh;
+    flex-shrink: 0;
+  }
+
+  #updiv {
+    padding: 12px 14px;
+  }
+
+  #searchContainer {
+    flex-wrap: wrap;
+  }
+
+  #search {
+    min-width: 100px;
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  #addQuestionBtn {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  #downdiv {
+    max-height: calc(40vh - 100px);
+  }
+
+  #downdiv > div {
+    padding: 12px 14px;
+  }
+
+  #downdiv h1 {
+    font-size: 15px;
+  }
+
+  #downdiv p {
+    font-size: 13px;
   }
 
   #rightdiv {
     width: 100%;
-    padding: 20px;
+    padding: 16px;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
   #main h1 {
-    font-size: 22px;
+    font-size: 24px;
+    margin-bottom: 12px;
   }
 
   #main p {
     font-size: 14px;
+    margin-bottom: 16px;
   }
 
-  #updiv {
-    flex-direction: column;
-    padding: 14px;
+  #subject, #question {
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
   }
 
-  #newbtn {
-    width: 100%;
-    padding: 12px 16px;
+  #question {
+    height: 120px;
   }
 
-  #search {
-    width: 100%;
+  #submitbtn {
+    padding: 10px 16px;
+    font-size: 14px;
   }
 
-  #downdiv div {
-    padding: 12px 14px;
+  #question-header {
+    margin-bottom: 16px;
   }
 
-  input, textarea {
-    padding: 11px 12px;
-    font-size: 16px;
+  #question-header h2 {
+    font-size: 18px;
   }
 
-  button {
-    width: 100%;
-    padding: 14px 16px;
-    font-size: 16px;
+  #quesdiv {
+    padding: 12px;
+    margin-bottom: 12px;
+    max-height: 200px;
   }
 
-  #quesdiv, #responselist {
-    padding: 16px;
+  #quesdiv h1 {
+    font-size: 18px;
+  }
+
+  #quesdiv p {
+    font-size: 13px;
+  }
+
+  #resolve-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  #responses-container {
+    margin-bottom: 16px;
+  }
+
+  #responses-container h2 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  #responselist {
+    padding: 12px;
+    border: 1px solid #e1e4e8;
+    max-height: 30vh;
+  }
+
+  #responselist .response-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  #responselist .response-item h1 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  #responselist .response-item p {
+    font-size: 12px;
     margin-bottom: 6px;
+  }
+
+  #responselist .response-actions {
+    gap: 6px;
+  }
+
+  #responselist .response-actions button {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  #add-response {
+    margin-top: 12px;
+  }
+
+  #add-response h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  #respdiv input, #respdiv textarea {
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  #respdiv textarea {
+    height: 100px;
+  }
+
+  #respbtn {
+    padding: 10px 16px;
+    font-size: 14px;
   }
 }
 
@@ -582,37 +714,47 @@ body {
     letter-spacing: 0.5px;
   }
 
+  .maindiv {
+    flex-direction: column;
+  }
+
   #leftdiv {
-    max-height: 40vh;
-  }
-
-  #rightdiv {
-    padding: 16px;
-  }
-
-  #main h1 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  #main p {
-    font-size: 13px;
-    margin-bottom: 16px;
+    width: 100%;
+    max-height: 35vh;
   }
 
   #updiv {
+    padding: 10px 12px;
     gap: 8px;
-    padding: 12px;
   }
 
-  #newbtn {
-    padding: 11px 14px;
-    font-size: 13px;
+  #searchContainer {
+    flex-direction: column;
   }
 
   #search {
+    width: 100%;
     padding: 10px 12px;
     font-size: 13px;
+  }
+
+  #addQuestionBtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  #addQuestionBtn i {
+    margin-right: 4px;
+  }
+
+  #downdiv {
+    max-height: calc(35vh - 90px);
+  }
+
+  #downdiv > div {
+    padding: 10px 12px;
+    gap: 6px;
   }
 
   #downdiv h1 {
@@ -621,34 +763,146 @@ body {
 
   #downdiv p {
     font-size: 12px;
+    line-height: 1.3;
   }
 
-  input, textarea {
-    padding: 10px 11px;
-    font-size: 15px;
-    margin-bottom: 14px;
+  #downdiv span {
+    font-size: 11px;
   }
 
-  textarea {
-    height: 100px;
+  #rightdiv {
+    width: 100%;
+    padding: 12px;
+    max-height: 65vh;
+    overflow-y: auto;
   }
 
-  button {
-    padding: 12px 14px;
-    font-size: 15px;
+  #main h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
   }
 
-  #quesdiv, #responselist {
-    padding: 4px;
-    margin-bottom: 14px;
-    border-radius: 8px;
-  }
-
-  #quesdiv h2, #responselist h2 {
-    font-size: 15px;
-  }
-
-  #quesdiv p, #responselist p {
+  #main p {
     font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  #subject, #question {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  #question {
+    height: 100px;
+    min-height: 80px;
+  }
+
+  #submitbtn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  #question-header {
+    margin-bottom: 12px;
+  }
+
+  #question-header h2 {
+    font-size: 16px;
+  }
+
+  #quesdiv {
+    padding: 10px;
+    margin-bottom: 10px;
+    max-height: 150px;
+  }
+
+  #quesdiv h1 {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+
+  #quesdiv p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  #resolve-btn {
+    padding: 8px 10px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  #responses-container {
+    margin-bottom: 12px;
+    min-height: 0;
+  }
+
+  #responses-container h2 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  #responselist {
+    padding: 10px;
+    max-height: 25vh;
+    min-height: 200px;
+  }
+
+  #responselist .response-item {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  #responselist .response-item h1 {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  #responselist .response-item p {
+    font-size: 11px;
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  #responselist .response-actions {
+    gap: 4px;
+    margin-bottom: 5px;
+  }
+
+  #responselist .response-actions button {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+
+  #add-response {
+    margin-top: 10px;
+  }
+
+  #add-response h2 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  #respdiv input, #respdiv textarea {
+    padding: 9px 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  #respdiv textarea {
+    height: 90px;
+  }
+
+  #respbtn {
+    padding: 10px 12px;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .highlight {
+    padding: 1px 3px;
+    font-size: inherit;
   }
 }
