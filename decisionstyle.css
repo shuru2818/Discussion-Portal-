@@ -32,7 +32,7 @@ body {
 
 .maindiv {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 60px);
   margin-top: 60px; /* Height of header */
   gap: 0;
 }
@@ -234,8 +234,6 @@ body {
   position: sticky;
   top: 0;
   background: #f8f9fa;
-  padding: 10px 0;
-  margin: 0 0 10px 0;
   font-size: 24px;
   color: #24292e;
   font-weight: 600;
@@ -248,7 +246,7 @@ body {
   flex-direction: column;
   overflow: hidden;
   margin-bottom: 20px;
-  height: 500px;
+  height: 800px;
 }
 
 #responses-container h2 {
@@ -256,9 +254,8 @@ body {
   position: sticky;
   top: 0;
   background: #f8f9fa;
-  padding: 10px 0;
-  margin: 0 0 10px 0;
-  font-size: 20px;
+
+  font-size: 15px;
   color: #24292e;
   font-weight: 600;
   z-index: 5;
@@ -269,14 +266,14 @@ body {
   overflow-y: auto;
   background: white;
   border: 1px solid #e1e4e8;
-  border-radius: 8px;
   padding: 20px;
+  height: 500px;
 }
 
 /* Custom scrollbar for responses */
-#responselist::-webkit-scrollbar {
+/* #responselist::-webkit-scrollbar {
   width: 6px;
-}
+} */
 
 #responselist::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -437,7 +434,7 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #resolve-btn:hover {

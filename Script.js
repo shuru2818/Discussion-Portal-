@@ -3,12 +3,12 @@
       let question = document.getElementById("question");
       let downdiv = document.getElementById("downdiv");
       let rightdiv = document.getElementById("rightdiv");
-      let newbtn = document.getElementById("newbtn");
-      newbtn.addEventListener("click", () => {
+      let addQuestionBtn = document.getElementById("addQuestionBtn");
+      addQuestionBtn.addEventListener("click", () => {
         rightdiv.innerHTML = `
         
           <div id="main">
-          <h1>Welcome to Decision Portal!</h1>
+          <h1>Welcome to Discussion Portal!</h1>
           <p>Enter a subject and question to get started</p>
           <input type="text" placeholder="Subject" id="subject" />
           <textarea name="text" id="question" placeholder="Question"></textarea>
